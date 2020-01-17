@@ -76,6 +76,10 @@
           "properties": {
             "appSettings": [
               {
+                "name": "Notifier:QueueSas",
+                "value": "https://aka.ms/ask-your-proctor"
+              },
+              {
                 "name": "Authentication:AzureAdB2C:Tenant",
                 "value": "snetga"
               },
