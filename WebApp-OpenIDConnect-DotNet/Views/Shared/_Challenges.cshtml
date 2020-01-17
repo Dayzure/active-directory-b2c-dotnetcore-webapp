@@ -61,11 +61,14 @@
         <ul>
             <li>The name of the claim must be <code>RestAdmin</code>. The value will be returned from the REST service</li>
             <li>
-                <p>Use the following REST endpoint in your custom (IEF) policy:<br>
-                <pre><code>https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==</code></pre></p>
+                <p>
+                    Use the following REST endpoint in your custom (IEF) policy:<br>
+                    <pre><code>https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==</code></pre>
+                </p>
                 <p>This service is protected by TLS mutual authentication. Contact your proctor to obtain the client certificate needed for authentication to the service.</p>
             </li>
             <li>The service expects an <code>email</code> input parameter and returns <code>RestAdmin</code> claim with required value to unlock your challenge</li>
+            <li>You must provide the value of the <code>email</code> claim to your proctor for him/her to register it with our back-end systems. This will unlock your challenge.</li>
         </ul>
 
         <h4>Success Criteria</h4>
