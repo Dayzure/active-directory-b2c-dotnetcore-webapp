@@ -42,6 +42,12 @@ namespace WebApp_OpenIDConnect_DotNet
 
             services.AddAuthorization(options =>
             {
+                options.AddPolicy("B2C-Challenge-IdP", policy =>
+                                policy.RequireClaim("http://schemas.microsoft.com/identity/claims/identityprovider"));
+            });
+
+            services.AddAuthorization(options =>
+            {
                 options.AddPolicy("B2C-Challenge-Admin", policy =>
                                 policy.RequireClaim("extension_CustomAdmin", "Anton", "Christer", "John"));
             });

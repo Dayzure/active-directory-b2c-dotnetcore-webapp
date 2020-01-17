@@ -7,6 +7,12 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     [NotifyChallenge]
     public class ChallengeController : Controller
     {
+        [Authorize(Policy = "B2C-Challenge-IdP")]
+        public IActionResult IdentityProvider()
+        {
+            return View();
+        }
+
         [Authorize(Policy = "B2C-Challenge-Admin")]
         public IActionResult CustomAdmin()
         {

@@ -13,6 +13,7 @@
         <h4>Success Criteria</h4>
         <ul>
             <li>You demonstrate successfull login using at least one local account and one social IdP.</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="IdentityProvider">Challenge #1 - Identity Provider</a></strong> page loads successfully.</li>
         </ul>
     </div>
 </div>
@@ -26,9 +27,9 @@
     </div>
     <div class="col-md-9">
         <h3>Add Custom Attribute</h3>
-        <p>To complete challenge #2 you have to present a custom attribute (claim) with name <code>extension_CustomAdmin</code></p>
+        <p>To complete challenge #2 you must present a custom attribute (claim) with name <code>extension_CustomAdmin</code></p>
         <p>
-            And value one of the:
+            And value, one of the:
             <ul>
                 <li>Anton</li>
                 <li>Christer</li>
@@ -42,7 +43,7 @@
             <li>End users must not be able to write the value of that attribute</li>
             <li>You will need to use Graph API to populate attribute value</li>
             <li>You must make sure that this value is present regardless of the chosen Identity Provider</li>
-            <li>The <strong><a asp-controller="Challenge" asp-action="CustomAdmin">Custom Admin page</a></strong> successfully loads.</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="CustomAdmin">Challenge #2 - Custom Admin</a></strong> page loads successfully</li>
         </ul>
     </div>
 </div>
@@ -70,7 +71,7 @@
         <h4>Success Criteria</h4>
         <ol>
             <li>You have a custom policy which uses REST API to call external URL</li>
-            <li>The <strong><a asp-controller="Challenge" asp-action="RestAdmin">REST Admin page</a></strong> successfully loads.</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="RestAdmin">Challenge #3 - REST Admin</a></strong> page loads successfully.</li>
         </ol>
     </div>
 </div>
@@ -83,15 +84,14 @@
         <span class="label label-warning">Optional</span>
     </div>
     <div class="col-md-9">
-        <h3>Advanced Custom Policy</h3>
+        <h3>Super Admin</h3>
         <p>To complete this optional challenge you have to extend your custom policy to include the custom attributes already configured in Challenge #3</p>
 
         <h4>Success Criteria</h4>
         <ul>
             <li>You have a custom policy which uses REST API to call external URL</li>
             <li>You have a custom policy which delcares custom attribute</li>
-            <li>The <strong><a asp-controller="Challenge" asp-action="CustomAdmin">Custom Admin page</a></strong> and the <strong><a asp-controller="Challenge" asp-action="RestAdmin">REST Admin page</a></strong>
-                of the website are both accessible using single custom policy</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="SuperAdmin">Challenge #4 - Super Admin</a></strong> page loads successfully.</li>
         </ul>
     </div>
 </div>
@@ -104,10 +104,10 @@
         <span class="label label-warning">Stretch</span>
     </div>
     <div class="col-md-9">
-        <h3>Protect Web API</h3>
+        <h3>Protected Web API</h3>
         <p>For this challenge you will need to:</p>
         <ul>
-            <li>Deploy an Web API</li>
+            <li>Deploy a Web API</li>
             <li>Protect that Web API using your B2C Tenant</li>
             <li>Grant access to the Web API for your current Web Application</li>
             <li>Configure your current Web Application with the API's scopes and URL</li>
