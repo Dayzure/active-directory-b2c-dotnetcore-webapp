@@ -3,16 +3,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-<div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Not quite there yet!</h4>
-    <p>Your request could not be authorized!</p>
-    <p>Check out the challenges descriptions bellow to understand more.</p>
-    <p>You can also talk to your proctor about any challenge.</p>
+<div class="row">
+    <div class="col-md-12">
+        <br>
+        <div class="alert alert-danger" role="alert">
+            <strong class="alert-heading">Access Denied</strong>
+            - you do not have to acces this page
+        </div>
+    </div>
 </div>
-
-<div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">Review the challenges again</h4>
-    <p>Go to <a class="btn btn-primary" asp-controller="Home" asp-action="Challenges">Challenges</a> and review the requirements to completing your tasks.</p>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Not quite there yet!</h1>
+        <p>This means you have not completed a challenge. To successfully complete a challenge, you must have access to this page.</p>
+        <p>This fix this problem:</p>
+        <ul>
+            <li>Review the <a asp-controller="Home" asp-action="Challenges">challenge</a> requirements to completing your tasks.</li>
+            <li>You can also talk to your proctor about any challenge.</li>
+        </ul>
+        <p><a class="btn btn-primary" asp-controller="Home" asp-action="Challenges">Review Workshop Challenges &rarr;</a></p>
+    </div>
 </div>

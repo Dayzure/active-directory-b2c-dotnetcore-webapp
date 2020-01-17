@@ -31,12 +31,19 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="RequiredSetup">Required Setup</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Challenges">Challenges</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Challenge" asp-action="CustomAdmin">Challenge-Admin</a></li>
-                    <li><a asp-area="" asp-controller="Challenge" asp-action="RestAdmin">Challenge-REST</a></li>
-                    <li><a asp-area="" asp-controller="Challenge" asp-action="SuperAdmin">Challenge-SuperAdmin</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Api">Challenge-API</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Challenges <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Challenges">List of Challenges</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a asp-area="" asp-controller="Challenge" asp-action="IdentityProvider">1 - External Identity Provider</a></li>
+                            <li><a asp-area="" asp-controller="Challenge" asp-action="CustomAdmin">2 - Custom Admin</a></li>
+                            <li><a asp-area="" asp-controller="Challenge" asp-action="RestAdmin">3 - REST Actuin</a></li>
+                            <li><a asp-area="" asp-controller="Challenge" asp-action="SuperAdmin">4 - SuperAdmin</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Api">5 - Web API</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

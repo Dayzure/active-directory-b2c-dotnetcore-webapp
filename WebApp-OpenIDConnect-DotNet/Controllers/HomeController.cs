@@ -78,23 +78,23 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
                 switch (response.StatusCode)
                 {
                     case HttpStatusCode.OK:
-                        responseString = (await response.Content.ReadAsStringAsync()).Replace(",",", <br />");
+                        responseString = (await response.Content.ReadAsStringAsync()).Replace("},",$"}}, {Environment.NewLine}");
                         break;
                     case HttpStatusCode.Unauthorized:
-                        responseString = $"Please sign in again. {response.ReasonPhrase}";
+                        responseString = $"Please sign in again.{Environment.NewLine} {response.ReasonPhrase}";
                         break;
                     default:
-                        responseString = $"Error calling API. StatusCode=${response.StatusCode}";
+                        responseString = $"Error calling API.{Environment.NewLine} StatusCode=${response.StatusCode}";
                         break;
                 }
             }
             catch (MsalUiRequiredException ex)
             {
-                responseString = $"Session has expired. Please sign in again. {ex.Message}";
+                responseString = $"Session has expired. Please sign in again.{Environment.NewLine} {ex.Message}";
             }
             catch (Exception ex)
             {
-                responseString = $"Error calling API: {ex.Message}";
+                responseString = $"Error calling API:{Environment.NewLine} {ex.Message}";
             }
 
             ViewData["Payload"] = $"{responseString}";            

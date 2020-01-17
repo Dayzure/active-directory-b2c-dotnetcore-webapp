@@ -1,23 +1,29 @@
 @{
     ViewData["Title"] = "API";
 }
-<div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">Stretch Challenge!</h4>
-    <p>This is stretch challenge! Consider this challenge only after you completed the other challenges.</p>
-    <p>
-        To complete this challenge you need to deploy a Web API application and configure it.
-        This can be your own API that is protected by your B2C tenant. Or you can use the simple API we provided.
-    </p>
-    <p>Once you deployed and protected Web API by the same B2C tenant, you shall see the results here.</p>
-    <hr>
-    <a class="btn btn-info" href="https://deploy.azure.com/?repository=https://github.com/Dayzure/b2c-preday-webapi-core" role="button">Deploy Simple RESTful API to Azure</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Challenge #6 (stretch)</h1>
+        <p>This is stretch challenge! Consider this challenge only after you completed <a asp-controller="Home" asp-action="Challenges">challenges 1-5</a>.</p>
+        <p>
+            To complete this challenge you need to deploy a Web API application and configure it.
+            This can be your own API that is protected by your B2C tenant. Or you can use the simple API we provided.
+        </p>
+        <hr>
+
+        <h3>Part 1 - Deploy the App</h3>
+        <p>Once you deployed and protected Web API by the same B2C tenant, you shall see the results below.</p>
+        <p><a class="btn btn-info" href="https://deploy.azure.com/?repository=https://github.com/Dayzure/b2c-preday-webapi-core" role="button">Deploy Simple RESTful API to Azure &rarr;</a></p>
+        <hr>
+
+        <h3>Part 2 - Success Criteria</h3>
+        <h4>API Payload</h4>
+        <p>If the API Payload is empty or showing an error, this means you have not successfully configured it.</p>
+<pre>
+@ViewData["Payload"]
+</pre>
+
+    </div>
 </div>
 
-<h3>API Payload:</h3>
-<div class="alert alert-info" role="alert">
-    @ViewData["Payload"]
-</div>
-
-<div class="alert alert-warning" role="alert">
-    If the API Payload is empty or showing an error, this means you have not successfully configured it.
-</div>
