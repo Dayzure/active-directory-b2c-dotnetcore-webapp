@@ -1,91 +1,118 @@
-﻿<div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">Challenge <span class="badge badge-success">1</span></h4>
-    <hr />
-    <h4 class="alert-heading">Identity Provider</h4>
-    <p>To go through your challenges you have to add <strong>at least one</strong> external Identity Provider to your B2C tenant.</p>
-    <p>It is advisable to use your newly created Azure AD Enterprise tenant as IdP.</p>
-    <p>It is desirable to add one social IdP which is not Microsoft Account</p>
-    <hr />
-    <h4 class="alert-heading">Success criteria:</h4>
-    <ul>
-        <li>You demonstrate successfull login using at least one local account and one social IdP.</li>
-    </ul>
-</div>
-
-<div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">Challenge <span class="badge badge-success">2</span></h4>
-    <hr />
-    <h4 class="alert-heading">Custom Admin</h4>
-    <p>To complete challenge "Custom Admin" you have to present a custom attribute (claim) with name <strong>extension_CustomAdmin</strong></p>
-    <p>
-        And value one of the:
+﻿<div class="row">
+    <div class="col-md-3">
+        <h3>Challenge #1</h3>
+        <span class="label label-danger">Required</span>
+    </div>
+    <div class="col-md-9">
+        <h3>Add an Identity Provider (IdP)</h3>
+        <p>To go through your challenges you have to add <strong>at least one</strong> external Identity Provider to your B2C tenant.</p>
         <ul>
-            <li>Anton</li>
-            <li>Christer</li>
-            <li>John</li>
+            <li>It is advisable to use your newly created Azure AD Enterprise tenant as IdP</li>
+            <li>It is desirable to add one social IdP which is not Microsoft Account</li>
         </ul>
-    </p>
-    
-    <hr />
-    <h4 class="alert-heading">Success criteria:</h4>
-    <ul>
-        <li>You have to complete this challenge using built-in policy.</li>
-        <li>End users must not be able to write the value of that attribute.</li>
-        <li>You will need to use Graph API to populate attribute value.</li>
-        <li>You must make sure that this value is present regardless of the chosen Identity Provider.</li>
-        <li><a asp-controller="Challenge" asp-action="CustomAdmin" class="btn btn-primary" role="button">This part</a> of the site is successfully loaded</li>
-    </ul>
-</div>
-
-<div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">Challenge <span class="badge badge-success">3</span></h4>
-    <hr />
-    <h4 class="alert-heading">REST Admin</h4>
-    <p>To complete challenge "REST Admin" you have to present a claim obtained from REST service.</p>
-    <p>The name of the claim must be <strong>RestAdmin</strong>. The value will be returned from the REST service</p>
-    <p>
-        Use the following REST endpoint in your custom (IEF) policy:
+        <h4>Success Criteria</h4>
         <ul>
-            <li>https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==</li>
+            <li>You demonstrate successfull login using at least one local account and one social IdP.</li>
         </ul>
-    </p>
-    <p>This service is protected by TLS mutual authentication. Contact your proctor to obtain the client certificate needed for authentication to the service.</p>
-    <p>The service expects an <strong>email</strong> input parameter and returns <strong>RestAdmin</strong> claim with required value to unlock your challenge.</p>
-
-    <hr />
-    <h4 class="alert-heading">Success criteria:</h4>
-    <ul>
-        <li>You have a custom policy which uses REST API to call external URL</li>
-        <li><a asp-controller="Challenge" asp-action="RestAdmin" class="btn btn-primary" role="button">This part</a> of the site is successfully loaded</li>
-    </ul>
-
+    </div>
 </div>
 
-<div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">Challenge <span class="badge badge-success">4</span> (optional)</h4>
-    <hr />
-    <h4 class="alert-heading">Advanced Custom Policy</h4>
-    <p>To complete this optional challenge you have to extend your custom policy to include the custom attributes already configured in Challenge "Admin"</p>
-    <hr />
-    <h4 class="alert-heading">Success criteria:</h4>
-    <ul>
-        <li>You have a custom policy which uses REST API to call external URL</li>
-        <li>You have a custom policy which delcares custom attribute</li>
-        <li><a asp-controller="Challenge" asp-action="SuperAdmin" class="btn btn-primary" role="button">This</a> part of the website is successfully loaded using a single custom policy.</li>
-    </ul>
+<hr>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Challenge #2</h3>
+        <span class="label label-danger">Required</span>
+    </div>
+    <div class="col-md-9">
+        <h3>Add Custom Attribute</h3>
+        <p>To complete challenge #2 you have to present a custom attribute (claim) with name <code>extension_CustomAdmin</code></p>
+        <p>
+            And value one of the:
+            <ul>
+                <li>Anton</li>
+                <li>Christer</li>
+                <li>John</li>
+            </ul>
+        </p>
+
+        <h4>Success Criteria</h4>
+        <ul>
+            <li>You have to complete this challenge using built-in policy</li>
+            <li>End users must not be able to write the value of that attribute</li>
+            <li>You will need to use Graph API to populate attribute value</li>
+            <li>You must make sure that this value is present regardless of the chosen Identity Provider</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="CustomAdmin">Custom Admin page</a></strong> successfully loads.</li>
+        </ul>
+    </div>
 </div>
 
-<div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">Challenge <span class="badge badge-success">5</span> (stretch)</h4>
-    <hr />
-    <h4 class="alert-heading">Web API</h4>
-    <p>For this challenge you will need to:</p>
-    <ul>
-        <li>Deploy an Web API</li>
-        <li>Protect that Web API using your B2C Tenant</li>
-        <li>Grant access to the Web API for your current Web Application</li>
-        <li>Configure your current Web Application with the API's scopes and URL</li>
-    </ul>
-    <hr>
-    <p class="mb-0">More information and success criteria are located under <a asp-area="" asp-controller="Home" asp-action="Api">API</a></p>
+<hr>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Challenge #3</h3>
+        <span class="label label-danger">Required</span>
+    </div>
+    <div class="col-md-9">
+        <h3>REST Admin</h3>
+        <p>To complete challenge #3 you have to present a claim obtained from REST service.</p>
+        <ul>
+            <li>The name of the claim must be <code>RestAdmin</code>. The value will be returned from the REST service</li>
+            <li>
+                <p>Use the following REST endpoint in your custom (IEF) policy:<br>
+                <pre><code>https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==</code></pre></p>
+                <p>This service is protected by TLS mutual authentication. Contact your proctor to obtain the client certificate needed for authentication to the service.</p>
+            </li>
+            <li>The service expects an <code>email</code> input parameter and returns <code>RestAdmin</code> claim with required value to unlock your challenge</li>
+        </ul>
+
+        <h4>Success Criteria</h4>
+        <ol>
+            <li>You have a custom policy which uses REST API to call external URL</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="RestAdmin">REST Admin page</a></strong> successfully loads.</li>
+        </ol>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Challenge #4</h3>
+        <span class="label label-warning">Optional</span>
+    </div>
+    <div class="col-md-9">
+        <h3>Advanced Custom Policy</h3>
+        <p>To complete this optional challenge you have to extend your custom policy to include the custom attributes already configured in Challenge #3</p>
+
+        <h4>Success Criteria</h4>
+        <ul>
+            <li>You have a custom policy which uses REST API to call external URL</li>
+            <li>You have a custom policy which delcares custom attribute</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="CustomAdmin">Custom Admin page</a></strong> and the <strong><a asp-controller="Challenge" asp-action="RestAdmin">REST Admin page</a></strong>
+                of the website are both accessible using single custom policy</li>
+        </ul>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Challenge #5</h3>
+        <span class="label label-warning">Stretch</span>
+    </div>
+    <div class="col-md-9">
+        <h3>Protect Web API</h3>
+        <p>For this challenge you will need to:</p>
+        <ul>
+            <li>Deploy an Web API</li>
+            <li>Protect that Web API using your B2C Tenant</li>
+            <li>Grant access to the Web API for your current Web Application</li>
+            <li>Configure your current Web Application with the API's scopes and URL</li>
+        </ul>
+
+        <p><a class="btn btn-default" asp-controller="Home" asp-action="Api">More information on API challenge page &rarr;</a></p>
+    </div>
 </div>
