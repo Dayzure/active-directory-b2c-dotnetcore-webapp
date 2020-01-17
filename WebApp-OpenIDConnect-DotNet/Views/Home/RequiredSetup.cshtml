@@ -1,72 +1,112 @@
 ﻿
 @{
-    ViewData["Title"] = "RequiredSetup";
+    ViewData["Title"] = "Required Setup";
     Layout = "~/Views/Shared/_Layout.cshtml";
     AzureAdB2COptions B2COptions = ViewData["AzureAdB2COptions"] as AzureAdB2COptions;
 }
 
-    <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading">Azure AD B2C Tenant required</h4>
-        <p>You are required to create your own Azure AD B2C tenant and proceed with it.</p>
-        <p>You may also use your existing Azure AD B2C Tenant if you have one.</p>
+<div>
+    <div class="col-md-12">
+        <h1>Required Setup</h1>
+
+        <h3>Prerequisite - Azure AD B2C Tenant</h3>
+        <p>Make sure you have accesse to an Azure AD B2C Tenant either newly existing or created before proceeding. You also need to be able register apps in your B2C tenant.</p>
+
+        <h3>Configure App</h3>
+        <p>Now that you have successfully deployed the Challange App, you must connect it to your Azure AD B2C tenant. In order to do that, you will need to configure your web app's application settings via the Azure Portal. <a href="https://docs.microsoft.com/en-us/azure/app-service/configure-common#configure-app-settings" target="_blank">Learn more about configuring application settings in Azure Portal &rarr;</a></p>
+        <p>Coding is not required. All configuration below can set via <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. For the workshop, it is not required to edit code and re-deploy.</p>
+
+        <div class="alert alert-info" role="alert">
+           <strong>Configuration</strong> is added as you progress in the challenges, i.e. you will have to configure your app multiple times.
+        </div>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Application Setting Name</th>
+                <th>Current Value</th>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:Tenant</strong><br />
+                    The name of <em>your</em> B2C tenant without .onmicrosoft.com (e.g. mysupertenant)
+                </td>
+                <td>
+                    <code>@B2COptions.Tenant</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:SignUpSignInPolicyId</strong><br>
+                    The id of <em>your</em> sign-up of sign-in policy - built-in or custom (e.g. b2c_1_susi)
+                </td>
+                <td>
+                    <code>@B2COptions.SignUpSignInPolicyId</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:ResetPasswordPolicyId</strong><br>
+                    The id of <em>your</em> reset password policy - built-in or custom
+                </td>
+                <td>
+                    <code>@B2COptions.ResetPasswordPolicyId</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:EditProfilePolicyId</strong><br>
+                    The id of <em>your</em> edit profile policy - built-in or custom
+                </td>
+                <td>
+                    <code>@B2COptions.EditProfilePolicyId</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:RedirectUri</strong><br>
+                    Where should we redirect (e.g. @Context.Request.Scheme://@Context.Request.Host/signin-oidc) after successful login. This is the web url of the current web site.
+                </td>
+                <td>
+                    <code>@B2COptions.RedirectUri</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:ClientId</strong><br>
+                    The client_id of <em>your</em> registered application in <strong>your</strong> B2C tenant
+                </td>
+                <td>
+                    <code>@B2COptions.ClientId</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:ClientSecret</strong><br>
+                    The client secret of <em>your</em> registered application in <strong>your</strong> B2C tenant
+                </td>
+                <td>
+                    <code>*****</code> (not displayed for security reasons)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:ApiUrl</strong><br>
+                    External API URI protected by the same B2C tenant (e.g. https://fabrikamb2chello.azurewebsites.net/hello)
+                </td>
+                <td>
+                    <code>@B2COptions.ApiUrl</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Authentication:AzureAdB2C:ApiScopes</strong><br>
+                    external API scopes protected by the same B2C tenant (e.g. https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read)
+                </td>
+                <td>
+                    <code>@B2COptions.ApiScopes</code>
+                </td>
+            </tr>
+        </table>
+
     </div>
-
-<div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">Required Setup</h4>
-    <p>Now that you have successfully deployed the Challange App, you must connect it to your Azure AD B2C tenant.</p>
-    <p>For that, you need to add the following application settings to your web app.</p>
-    <p>You can learn more about configuring application settings in Azure Portal <a href="https://docs.microsoft.com/en-us/azure/app-service/configure-common#configure-app-settings">here</a></p>
 </div>
-
-<table class="table-hover table-condensed table-striped">
-    <tr>
-        <th>Application Setting Name</th>
-        <th>Current Value</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:Tenant</td>
-        <td>@B2COptions.Tenant</td>
-        <td>the name of <strong>your</strong> B2C tenant without .onmicrosoft.com (e.g. mysupertenant)</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:SignUpSignInPolicyId</td>
-        <td>@B2COptions.SignUpSignInPolicyId</td>
-        <td>the id of <strong>your</strong> sign-up of sign-in policy - built-in or custom (e.g. b2c_1_susi)</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:ResetPasswordPolicyId</td>
-        <td>@B2COptions.ResetPasswordPolicyId</td>
-        <td>the id of <strong>your</strong> reset password policy - built-in or custom</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:EditProfilePolicyId</td>
-        <td>@B2COptions.EditProfilePolicyId</td>
-        <td>the id of <strong>your</strong> edit profile policy - built-in or custom</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:RedirectUri</td>
-        <td>@B2COptions.RedirectUri</td>
-        <td>Where should we redirect (e.g. @Context.Request.Scheme://@Context.Request.Host/signin-oidc) after successful login. This is the web url of the current web site.</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:ClientId</td>
-        <td>@B2COptions.ClientId</td>
-        <td>the client_id of <strong>your</strong> registered application in <strong>your</strong> B2C tenant</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:ClientSecret</td>
-        <td>[*****] (not displayed for security reasons)</td>
-        <td>the client secret of <strong>your</strong> registered application in <strong>your</strong> B2C tenant</td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:ApiUrl</td>
-        <td>@B2COptions.ApiUrl</td>
-        <td>external API URI protected by the same B2C tenant (e.g. https://fabrikamb2chello.azurewebsites.net/hello) </td>
-    </tr>
-    <tr>
-        <td>Authentication:AzureAdB2C:ApiScopes</td>
-        <td>@B2COptions.ApiScopes</td>
-        <td>external API scopes protected by the same B2C tenant (e.g. https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read) </td>
-    </tr>
-</table>
