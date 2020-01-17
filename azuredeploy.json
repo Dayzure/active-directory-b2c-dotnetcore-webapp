@@ -77,7 +77,7 @@
             "appSettings": [
               {
                 "name": "Authentication:AzureAdB2C:Tenant",
-                "value": ""
+                "value": "snetga"
               },
               {
                 "name": "Authentication:AzureAdB2C:ClientId",
