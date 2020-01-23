@@ -4,11 +4,31 @@
         <span class="label label-danger">Required</span>
     </div>
     <div class="col-md-9">
-        <h3>Add an Identity Provider (IdP)</h3>
-        <p>To go through your challenges you have to add <strong>at least one</strong> external Identity Provider to your B2C tenant.</p>
+        <h3>Identity Provider (IdP)</h3>
+        <p>
+            ACJ Operations is building a customer facing web application. They need to authenticate end-users by providing the capability
+            "bring your own e-mail address". The product owner for the web application has already identified Azure AD B2C as the logical
+            choice for implementing authentication and authorization.
+        </p>
+        <p>
+            Last minute requirement from top management came - employees of ACJ Operations must be able to to do
+            single-sign-on to this web applicaiton using their corporate credentials.
+        </p>
+        <p>There is also a backlog item which requires end-users to be able to sign-in using their existing social identity.</p>
+        <hr />
+        <p>
+            This challenge requires that you have existing Azure AD B2C Tenant configured with <strong>at least one</strong> external Identity Provider.
+            In addition, your hackathon application must be configured and registered in your Azure AD B2C tenant.
+        </p>
+        <p>Here are some useful tips and links</p>
         <ul>
             <li>It is advisable to use your newly created Azure AD Enterprise tenant as IdP</li>
             <li>It is desirable to add one social IdP which is not Microsoft Account</li>
+            <li><a href="https://aka.ms/aad-hack/b2c/register-app">Application Registration in Azure AD B2C.</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/add-idp">Add Identity Provider in Azure AD B2C.</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/idp-aad">Add Azure Active Directory (single tenant) as Identity Provider in Azure AD B2C.</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/user-flows">User Flows in Azure AD B2C.</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/create-user-flow">Create User Flow in Azure AD B2C.</a></li>
         </ul>
         <h4>Success Criteria</h4>
         <ul>
@@ -26,8 +46,39 @@
         <span class="label label-danger">Required</span>
     </div>
     <div class="col-md-9">
-        <h3>Add Custom Attribute</h3>
-        <p>To complete challenge #2 you must present a custom attribute (claim) with name <code>extension_CustomAdmin</code></p>
+        <h3>Authorization</h3>
+        <p>
+            Congratulations! Your team managed to deliver first MVP (Minimum Viable Product) on time for review.
+        </p>
+        <p>
+            Your security and complicance officer quickly identified an area within the application which provides access to
+            customers' data and configuration settings of your web application. You are requried to protect this part of the web application
+            by an authorization rule and make sure that only authorized personnel is granted access to it.
+        </p>
+        <p>You are not allowed to deploy your application to the company's staging environment before you fix this issue!</p>
+        <p>
+            Your application is already using Azure AD B2C for Authentication, but you didn't have the time really think on Authorization.
+            The time has come, your project is blocked and you must figure out how to implement authorization.
+        </p>
+        <p>
+            After short brainstorming with your team, you all agree that you can use a custom attribute in Azure AD B2C to implement authorization.
+            You also agree that this is achievable using standard (or simple) user flows and out of the box functionalities. There is no need for
+            additional programming or using of custom policies.
+        </p>
+
+        <hr />
+
+        <p>Here are some useful links</p>
+        <ul>
+            <li><a href="https://aka.ms/aad-hack/b2c/custom-attr">Defining Custom Attributes and use them in User Flows</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/extensions-app">The b2c-extensions-app</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/dir-ext">Directory Schema Extensions in Azure AD B2C</a> (this is how custom attributes are saved to your directory)</li>
+            <li><a href="https://aka.ms/aad-hack/add-graph-explorer">Azure AD Graph Explorer app</a> (you must an account from your B2C tenant - e.g. john@myb2ctenant.onmicrosoft.com!)</li>
+            <li><a href="https://aka.ms/aad-hack/graph-api-ref">Azure AD Graph API reference</a></li>
+            <li><a href="https://aka.ms/aad-hack/graph-api-user">Operations on User object</a> - Azure AD Graph API</li>
+        </ul>
+
+        <p>To complete challenge #2 you must present a custom attribute (claim) with name <code>CustomAdmin</code></p>
         <p>
             And value, one of the:
             <ul>
@@ -56,7 +107,79 @@
         <span class="label label-danger">Required</span>
     </div>
     <div class="col-md-9">
-        <h3>REST Admin</h3>
+        <h3>REST Action</h3>
+        <p>
+            Your team successfully deployed the web application to the company's staging environment meeting all requirements of the product owner and
+            the security and compliance officer.
+        </p>
+        <p>
+            In the meanwhile a new HR/ERP system was implemented within the company. With GDPR being active almost over an year now there is no room
+            for comprise in security and compliance. Identity is the new control plane. Central company workflows define the entitelments and access
+            permissions anyone within the company has been granted. HR Operations team has deployed an internal REST service which must be used by
+            all applications to obtain entitelment and authorization information. This REST service is protected via X.509 certificate.
+        </p>
+        <p>
+            Product owner comes to your team a new requirement! You have to implement authorization for the most sensitive informaiton of the web portal.
+            You are required to use the HR Operations REST service within the authentication flows of your application. There is no other choice and you must
+            implement a custom policy with REST action.
+        </p>
+        <p>
+            Your team has already prepared the highly secured part of the website and has put new authorization policy in place. This new authorization
+            policy requires that a claim with type (name) <code>RestAdmin</code> is present in the ID Token. You have to implement REST action to
+            obtain the value of this claim. You contact your HR Operations team to get more details about the REST Restive they are providing. And
+            they give you the following informaiton:
+        </p>
+        <ul>
+            <li>
+                REST Service Endpoint: <br />
+                <pre><code>https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==</code></pre>
+            </li>
+            <li>Authentication:
+                <ul>
+                    <li>Type: <code>TLS Mutual Authentication</code></li>
+                    <li>Client certificate: <a href="https://aka.ms/id-hack-cert">certificate.pfx</a></li>
+                    <li>Client certificate password: <a href="https://aka.ms/id-hack-cert-pwd">click here to reveal the password</a></li>
+                </ul>
+            </li>
+            <li>Required input paramters: <code>email</code></li>
+            <li>
+                Sample Request (GET):
+<pre><code>GET https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==&email=anton@acjops.com
+</code></pre>
+            </li>
+            <li>
+                Sample Request (POST):
+<pre><code>POST https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==
+host: b2c-preday-rest.azurewebsites.net
+Content-Type: application/json
+Accept: application/json
+
+Body
+{
+    "email": "anton@acjops.com"
+}
+</code></pre>
+            </li>
+            <li>
+                Sample Response:
+<pre><code>{
+    "email": "anton@acjops.com",
+    "RestAdmin": "12CD"
+}
+</code></pre>
+            </li>
+        </ul>
+
+        <hr />
+
+        <p>Here are some useful links</p>
+        <ul>
+            <li><a href="https://aka.ms/aad-hack/b2c/custom-policy-start">Getting started with custom policies</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/starter">Custom Policies Starter Pack</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/code-ext">B2C Extension for VS Code</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/rest">RESTFull technical profile in custom policies</a></li>
+        </ul>
+
         <p>To complete challenge #3 you have to present a claim obtained from REST service.</p>
         <ul>
             <li>The name of the claim must be <code>RestAdmin</code>. The value will be returned from the REST service</li>
@@ -65,16 +188,15 @@
                     Use the following REST endpoint in your custom (IEF) policy:<br>
                     <pre><code>https://b2c-preday-rest.azurewebsites.net/api/RestAction?code=cDvT2ioatDtetOjDvU//uBzvD8IR363y3lyDJIWriKw840rWnaPQMg==</code></pre>
                 </p>
-                <p>This service is protected by TLS mutual authentication. Contact your proctor to obtain the client certificate needed for authentication to the service.</p>
             </li>
             <li>The service expects an <code>email</code> input parameter and returns <code>RestAdmin</code> claim with required value to unlock your challenge</li>
-            <li>You must provide the value of the <code>email</code> claim to your proctor for him/her to register it with our back-end systems. This will unlock your challenge.</li>
+            @*<li>You must provide the value of the <code>email</code> claim to your proctor for him/her to register it with our back-end systems. This will unlock your challenge.</li>*@
         </ul>
 
         <h4>Success Criteria</h4>
         <ol>
             <li>You have a custom policy which uses REST API to call external URL</li>
-            <li>The <strong><a asp-controller="Challenge" asp-action="RestAdmin">Challenge #3 - REST Admin</a></strong> page loads successfully.</li>
+            <li>The <strong><a asp-controller="Challenge" asp-action="RestAdmin">Challenge #3 - REST Action</a></strong> page loads successfully.</li>
         </ol>
     </div>
 </div>
@@ -108,6 +230,23 @@
     </div>
     <div class="col-md-9">
         <h3>Protected Web API</h3>
+        <p>
+            The web application of ACJ Operations is deployed into production, but requirements for new features are coming
+            at the speed of light. It is becoming hard to maintain single monolyth application and you have been funded
+            to split the application into several independed services.
+        </p>
+        <p>
+            A separate team has already been working on additional module implemented as a REST Service. They have provided
+            you and automated deployment link and instructions how to configure the service. You have to deploy the new
+            REST service and connect it to your application. This requires additional configuration in your Azure AD B2C
+            tenant.
+        </p>
+        <hr />
+        <p>Here are some useful links</p>
+        <ul>
+            <li><a href="https://aka.ms/aad-hack/b2c/register-app">Register an application in Azure AD B2C</a></li>
+            <li><a href="https://aka.ms/aad-hack/b2c/add-web-api">Register an Web API in Azure AD B2C</a></li>
+        </ul>
         <p>For this challenge you will need to:</p>
         <ul>
             <li>Deploy a Web API</li>
@@ -115,7 +254,6 @@
             <li>Grant access to the Web API for your current Web Application</li>
             <li>Configure your current Web Application with the API's scopes and URL</li>
         </ul>
-
         <p><a class="btn btn-default" asp-controller="Home" asp-action="Api">More information on API challenge page &rarr;</a></p>
     </div>
 </div>
