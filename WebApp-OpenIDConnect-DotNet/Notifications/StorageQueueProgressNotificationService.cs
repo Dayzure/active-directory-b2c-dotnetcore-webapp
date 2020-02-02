@@ -37,7 +37,7 @@ namespace WebApp_OpenIDConnect_DotNet.Models
         {
             message.Identifier = _identifier;
             var data = JsonConvert.SerializeObject(message);
-            _queueClient.SendMessage(data);
+            _queueClient.SendMessage(Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(data)));
         }
     }
 }
