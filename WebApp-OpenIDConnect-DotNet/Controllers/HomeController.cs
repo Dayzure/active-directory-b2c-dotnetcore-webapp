@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Net;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace WebApp_OpenIDConnect_DotNet.Controllers
 {
@@ -104,6 +105,10 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         public IActionResult Error(string message)
         {
             ViewBag.Message = message;
+            var exceptionHandlerPathFeature =
+                HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            ViewBag.Message += exceptionHandlerPathFeature.Error.Message;
+            ViewBag.StackTrace = exceptionHandlerPathFeature.Error.StackTrace;
             return View();
         }
     }

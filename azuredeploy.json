@@ -77,7 +77,7 @@
             "appSettings": [
               {
                 "name": "Notifier:QueueSas",
-                "value": "https://aka.ms/ask-your-proctor"
+                "value": "https://aka.ms/aad-hack/QueueSaS"
               },
               {
                 "name": "Authentication:AzureAdB2C:Tenant",

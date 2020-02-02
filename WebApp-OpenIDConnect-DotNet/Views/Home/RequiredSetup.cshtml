@@ -17,9 +17,10 @@
         <p>Coding is not required. All configuration below can set via <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. For the workshop, it is not required to edit code and re-deploy.</p>
 
         <div class="alert alert-info" role="alert">
-           <strong>Configuration</strong> is added as you progress in the challenges, i.e. you will have to configure your app multiple times.
+            <strong>Configuration</strong> is added as you progress in the challenges, e.g. you will have to configure your app multiple times.
         </div>
 
+        <h3>Minimum required settings to start working on challenges</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Application Setting Name</th>
@@ -54,26 +55,8 @@
             </tr>
             <tr>
                 <td>
-                    <strong>Authentication:AzureAdB2C:ResetPasswordPolicyId</strong><br>
-                    The id of <em>your</em> reset password policy - built-in or custom
-                </td>
-                <td>
-                    <code>@B2COptions.ResetPasswordPolicyId</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>Authentication:AzureAdB2C:EditProfilePolicyId</strong><br>
-                    The id of <em>your</em> edit profile policy - built-in or custom
-                </td>
-                <td>
-                    <code>@B2COptions.EditProfilePolicyId</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <strong>Authentication:AzureAdB2C:RedirectUri</strong><br>
-                    Where should we redirect (e.g. @Context.Request.Scheme://@Context.Request.Host/signin-oidc) after successful login. This is the web url of the current web site.
+                    Where should B2C redirect the browser after successfull login(must be: @Context.Request.Scheme://@Context.Request.Host/signin-oidc).
                 </td>
                 <td>
                     <code>@B2COptions.RedirectUri</code>
@@ -87,6 +70,16 @@
                 <td>
                     <code>@B2COptions.ClientId</code>
                 </td>
+            </tr>
+        </table>
+
+
+
+        <h3>Challenge 5 (stretch) - Protected API, required settings</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Application Setting Name</th>
+                <th>Current Value</th>
             </tr>
             <tr>
                 <td>
