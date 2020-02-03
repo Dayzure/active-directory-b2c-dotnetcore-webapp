@@ -107,8 +107,8 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             ViewBag.Message = message;
             var exceptionHandlerPathFeature =
                 HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            ViewBag.Message += exceptionHandlerPathFeature.Error.Message;
-            ViewBag.StackTrace = exceptionHandlerPathFeature.Error.StackTrace;
+            ViewBag.Message += exceptionHandlerPathFeature?.Error?.Message ?? "";
+            ViewBag.StackTrace = exceptionHandlerPathFeature?.Error?.StackTrace ?? "Not Available";
             return View();
         }
     }
